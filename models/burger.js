@@ -1,37 +1,36 @@
-// import orm.js into burger.js
+var fs        = require('fs');
+var path      = require('path');
+var Sequelize = require('sequelize');
+var basename  = path.basename(module.filename);
+var env       = process.env.NODE_ENV || 'development';
 
-// create code that will call the ORM functions using burger specific input for the ORM.
+var config    = require(__dirname + '/../config/config.json')[env];
+var db        = {};
 
-//export
+if (config.use_env_variable) {
+  //var sequelize = new Sequelize(process.env[config.use_env_variable]);
+  var sequelize = new Sequelize(process.env.JAWSDB_URL);
+} else {
+  var sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
 
-// Sequelize (capital) references the standard library
-var Sequelize = require("sequelize");
-// sequelize (lowercase) references our connection to the DB.
-var sequelize = require("../config/connection.js");
+fs
+  .readdirSync(__dirname)
+  .filter(function(file) {
+    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+  })
+  .forEach(function(file) {
+    var model = sequelize['import'](path.join(__dirname, file));
+    db[model.name] = model;
+  });
 
-// Create the burger object
-var burger = {
-  // Select all burger table entries
-  selectAll: function(cb) {
-    orm.selectAll("burgers", function(res) {
-      cb(res);
-    });
-  },
-
-  // The variables cols and vals are arrays
-  insertOne: function(cols, vals, cb) {
-    orm.insertOne("burgers", cols, vals, function(res) {
-      cb(res);
-    });
-  },
-
-  // The objColVals is an object specifying columns as object keys with associated values
-  updateOne: function(objColVals, condition, cb) {
-    orm.updateOne("burgers", objColVals, condition, function(res) {
-      cb(res);
-    });
+Object.keys(db).forEach(function(modelName) {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
   }
-};
+});
 
-// Export the database functions for the controller (burgerController.js).
-module.exports = burger;
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
+module.exports = db;
