@@ -26,7 +26,6 @@ var sequelize = new Sequelize("burgers_db", "root", "986680Hj!", {
   }
 });
 
-
 //export the connection
 
 module.exports = sequelize;
