@@ -1,0 +1,105 @@
+html {
+  background-color: #ffc04c;
+}
+
+body {
+  margin: 0 auto;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#myburger {
+  display: block;
+  margin: auto;
+  align-content: center;
+  width: 200px;
+  height: 200px;
+}
+
+h1 {
+  text-align: center;
+  margin: 10px;
+}
+
+#row1 {
+  display: flex;
+  width: 100%;
+  min-width: 500px;
+  margin-left: 60px;
+  margin-right: 25px;
+}
+
+#row2 {
+  display: flex;
+  min-width: 500px;
+  margin-right: 25px;
+  margin-left: 250px;
+  margin-top: 25px;
+}
+
+.burgerAvailable {
+  font-weight: normal;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 10px;
+  width: 100%;
+  margin: 5px;
+  padding: 10px;
+  background-color: #b7ffc2;
+  border: none;
+}
+
+#devour {
+  align-content: inherit;
+}
+
+.finished {
+  font-weight: normal;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 10px;
+  width: 100%;
+  margin: 5px;
+  padding: 10px;
+  background-color: #ffd1c9;
+}
+
+h2 {
+  text-align: center;
+  font-size: 40px;
+  margin: 10px;
+}
+
+#name {
+  width: 75%;
+  height: 50px;
+  position: relative;
+  top: 50%;
+  left: 10%;
+  background-color: #ffffff;
+}
+
+.addBurgerButton {
+  font-weight: normal;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 25px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  background-color: #c59439;
+  position: relative;
+  top: 50%;
+  left: 50%;
+}
+
+.addBurgerButton:active {
+  background-color: #ffc04c;
+}
+
+.footer {
+  background-color: #ffc04c;
+  padding: 20px 0;
+}
