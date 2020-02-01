@@ -1,40 +1,64 @@
-// import express
+// Node Dependencies
 var express = require("express");
 var router = express.Router();
+var models = require("../models"); 
 
-// import burger.js.
-var burger = require("../models/burger.js");
+// Create routes
+// ----------------------------------------------------
 
-//create the router for the app and export
+
 router.get("/", function(req, res) {
-  burger.selectAll(function(data) {
-    var hbsObject = {
-      burgers: data
-    };
-    // console.log(hbsObject);
+  res.redirect("/index");
+});
+
+
+router.get("/index", function(req, res) {
+ 
+  models.Burger.findAll({}).then(function(data) {
+    
+    var hbsObject = { burgers: data };
+   
     res.render("index", hbsObject);
   });
 });
 
-router.post("/burgers", function(req, res) {
-  burger.insertOne(["burger_name"], [req.body.burger_name], function(data) {
-    res.redirect("/");
-  });
+// Create a New Burger
+router.post("/", function(req, res) {
+  
+  models.Burger
+    .create({
+      burger_name: req.body.name
+    })
+    .then(function() {
+     
+      res.redirect("/index");
+    });
 });
 
-router.put("/burgers/:id", function(req, res) {
-  var condition = "id= " + req.params.id;
-
-  burger.updateOne(
+// Devour a Burger
+router.post("/:id", function(req, res) {
+  models.Burger.update(
     {
       devoured: true
     },
-    condition,
-    function(data) {
-      res.redirect("/");
-    }
-  );
+    { where: { id: req.params.id } }
+  ).then(function(){
+    res.redirect("/index");
+  })
 });
 
-// Export routes for server.js to use.
+//Delete burger
+router.delete("/:id", function(req, res) {
+  models.Burger.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(data){
+    res.json(data);
+  })
+})
+
+// ----------------------------------------------------
+
+
 module.exports = router;

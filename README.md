@@ -62,7 +62,7 @@ Updated: Jan 30, 2020
 - - -
 
 ### Links & Portfolio's Links
-*  [Deployed page](https://eatdaburger-cshj.herokuapp.com/)
+*  [Deployed page](https://sequelizedburger-cshj.herokuapp.com/)
 *  [Hyejin's Portfolio](https://cshjnim.github.io/)
 
 - - -
