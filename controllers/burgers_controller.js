@@ -16,7 +16,7 @@ router.get("/index", function(req, res) {
  
   models.Burger.findAll({}).then(function(data) {
     
-    var hbsObject = { burgers: data };
+    var hbsObject = { burger: data };
    
     res.render("index", hbsObject);
   });

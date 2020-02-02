@@ -1,22 +1,22 @@
 {
-    "development": {
-      "username": "root",
-      "password": "986680Hj!",
-      "port": "3306",
-      "database": "burger_sequel_db",
-      "host": "127.0.0.1",
-      "dialect": "mysql"
-    },
-    "test": {
-      "username": "root",
-      "password": null,
-      "database": "database_test",
-      "host": "127.0.0.1",
-      "dialect": "mysql"
-    },
-     "production": {
-      "use_env_variable":"JawsDB_URL",
-      "dialect": "mysql"
-      
-    }
+  "development": {
+    "username": "root",
+    "password": "986680Hj!",
+    "port": "3306",
+    "database": "burger_sequel_db",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "burger_sequel_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+   "production": {
+    "use_env_variable":"JawsDB_URL",
+    "dialect": "mysql"
+    
   }
+}
