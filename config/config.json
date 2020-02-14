@@ -6,5 +6,13 @@
     "database": "burger_sequel_db",
     "host": "localhost",
     "dialect": "mysql"
-  }
+  },
+"test": {
+  "use_env_variable": "JAWSDB_URL",
+  "dialect": "mysql"
+},
+"production": {
+  "use_env_variable": "JAWSDB_URL",
+  "dialect": "mysql"
+}
 }
