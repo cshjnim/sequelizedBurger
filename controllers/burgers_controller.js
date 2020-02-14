@@ -14,7 +14,7 @@ router.get("/", function(req, res) {
 
 router.get("/index", function(req, res) {
  
-  models.Burger.findAll({}).then(function(data) {
+  models.burger.findAll({}).then(function(data) {
     
     var hbsObject = { burger: data };
    
@@ -23,11 +23,11 @@ router.get("/index", function(req, res) {
 });
 
 // Create a New Burger
-router.post("/", function(req, res) {
+router.post("/burger", function(req, res) {
   
-  models.Burger
+  models.burger
     .create({
-      burger_name: req.body.name
+      burger_name: req.body.name      
     })
     .then(function() {
      
@@ -36,8 +36,8 @@ router.post("/", function(req, res) {
 });
 
 // Devour a Burger
-router.post("/:id", function(req, res) {
-  models.Burger.update(
+router.post("/burger/:id", function(req, res) {
+  models.burger.update(
     {
       devoured: true
     },
@@ -48,8 +48,8 @@ router.post("/:id", function(req, res) {
 });
 
 //Delete burger
-router.delete("/:id", function(req, res) {
-  models.Burger.destroy({
+router.delete("/burger/:id", function(req, res) {
+  models.burger.destroy({
     where: {
       id: req.params.id
     }

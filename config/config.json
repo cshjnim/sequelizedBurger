@@ -6,17 +6,5 @@
     "database": "burger_sequel_db",
     "host": "localhost",
     "dialect": "mysql"
-  },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "burger_sequel_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-   "production": {
-    "use_env_variable":"JawsDB_URL",
-    "dialect": "mysql"
-    
   }
 }
